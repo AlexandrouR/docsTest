@@ -26,7 +26,7 @@ parameter specifies that we only want the blocks, not the embedded
 transactions too):
 
 ```java
-Subscription subscription = web3j.blockFlowable(false).subscribe(block -> {
+Disposable subscription = web3j.blockFlowable(false).subscribe(block -> {
     ...
 });
 ```
@@ -34,7 +34,7 @@ Subscription subscription = web3j.blockFlowable(false).subscribe(block -> {
 To receive all new transactions as they are added to the blockchain:
 
 ```java
-Subscription subscription = web3j.transactionFlowable().subscribe(tx -> {
+Disposable subscription = web3j.transactionFlowable().subscribe(tx -> {
     ...
 });
 ```
@@ -43,7 +43,7 @@ To receive all pending transactions as they are submitted to the network
 (i.e. before they have been grouped into a block together):
 
 ```java
-Subscription subscription = web3j.pendingTransactionFlowable().subscribe(tx -> {
+Disposable subscription = web3j.pendingTransactionFlowable().subscribe(tx -> {
     ...
 });
 ```
