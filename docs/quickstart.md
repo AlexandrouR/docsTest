@@ -1,4 +1,4 @@
-Quickstart This is a quick Test
+Quickstart 
 ==========
 
 Web3j CLI
