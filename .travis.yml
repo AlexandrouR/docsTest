@@ -2,14 +2,15 @@ language: python
 branches:
   only:
   - master
-jobs:
-  include:
-  stage: install
+install:
 - pip install pygments
 - pip install mkdocs
 - pip install mkdocs-material
-  stage: delpoy
+jobs:
+  include:
+- stage: deploy
   if: branch = master AND NOT type = pull_request
+  script:
 - git config user.name "AlexandrouR"
 - git config user.email "alexandrosrousos@gmail.com"
 - git remote add gh-token "https://${GH_TOKEN}@github.com/AlexandrouR/docsTest.git";
