@@ -1,16 +1,17 @@
+language: python
 branches:
   only:
   - master
-language: python
 jobs:
   include:
+  stage: install
+- pip install pygments
+- pip install mkdocs
+- pip install mkdocs-material
+  stage: delpoy
   if: branch = master AND NOT type = pull_request
-- stage: install
-	pip install pygments
-	pip install mkdocs
-	pip install mkdocs-material
-  git config user.name "AlexandrouR"
-  git config user.email "alexandrosrousos@gmail.com"
-  git remote add gh-token "https://${GH_TOKEN}@github.com/AlexandrouR/docsTest.git";
-  git fetch gh-token && git fetch gh-token gh-pages:gh-pages;
-  mkdocs gh-deploy -v --clean --remote-name gh-token;
+- git config user.name "AlexandrouR"
+- git config user.email "alexandrosrousos@gmail.com"
+- git remote add gh-token "https://${GH_TOKEN}@github.com/AlexandrouR/docsTest.git";
+- git fetch gh-token && git fetch gh-token gh-pages:gh-pages;
+- mkdocs gh-deploy -v --clean --remote-name gh-token;
